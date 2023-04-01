@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .box-red {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        background-color: red;
+        transition: background-color 1s ease 4s; /*passo aqui as propriedades de transição com seus determinados tempos de ação: bg-color muda em 1 segundo com 4s de delay com efeito 'ease'*/
+      }
+
+      .box-red:hover {
+        background-color: yellow;
+        transition-property: background-color;
+        transition-duration: 1s;
+        transition-timing-function: ease-in;
+        transition-delay: 4s; /*a animação COMEÇA somente depois do tempo determinado no transition-delay*/
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box-red"></div>
+  </body>
+</html>
