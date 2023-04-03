@@ -4,34 +4,116 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transition</title>
+    <title>Animation</title>
     <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-
-      .box-red {
+      .ball {
         width: 100px;
         height: 100px;
         border-radius: 100%;
         background-color: red;
-        transition: background-color 1s ease 4s; /*passo aqui as propriedades de transição com seus determinados tempos de ação: bg-color muda em 1 segundo com 4s de delay com efeito 'ease'*/
+        position: relative;
+
+        animation-name: example-one; /*passo o nome da keyframe*/
+        animation-duration: 4s;
       }
 
-      .box-red:hover {
-        background-color: yellow;
-        transition-property: background-color;
-        transition-duration: 1s;
-        transition-timing-function: ease-in;
-        transition-delay: 4s; /*a animação COMEÇA somente depois do tempo determinado no transition-delay*/
+      .ball-two {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        background-color: red;
+        position: relative;
+
+        animation-name: example-two;
+        animation-duration: 4s;
+      }
+
+      .ball-three {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        background-color: red;
+        position: relative;
+
+        animation-name: example-three;
+        animation-duration: 5s;
+        animation-delay: 4s;
+        animation-iteration-count: infinite;
+        animation-direction: reverse; /*'reverse' começa a animação de trás pra frente; posso usar a propriedade 'alterate' p/ ela fazer uma animação em ping-pong (trás pra frente e frente pra trás); no 'alternate-reverse' ele começa de trás pra frente depois de frente pra trás*/
+      }
+
+      /*determino que será uma keyframe (animação) e passo o nome dela; dentro dela coloco as especificações da animação*/
+      @keyframes example-one {
+        from {
+          /*'from' é a especificação com a qual a animação irá começar*/
+          background-color: blueviolet;
+        }
+
+        to {
+          /*'to' vai falar para onde a animação tem que ir; o que ela tem que fazer*/
+          background-color: rosybrown;
+        }
+      } /*quando a animação acaba o elemento volta às config de estilização originais*/
+
+      @keyframes example-two {
+        0% {
+          background-color: blueviolet;
+        }
+
+        25% {
+          background-color: rosybrown;
+        }
+
+        50% {
+          background-color: blue;
+        }
+
+        75% {
+          background-color: green;
+        }
+
+        100% {
+          background-color: yellow;
+        }
+      }
+
+      @keyframes example-three {
+        0% {
+          background-color: blueviolet;
+          left: 0;
+          top: 0;
+        }
+
+        25% {
+          background-color: rosybrown;
+          left: 600px;
+          top: 0;
+        }
+
+        50% {
+          background-color: blue;
+          left: 600px;
+          top: 600px;
+        }
+
+        75% {
+          background-color: green;
+          left: 0;
+          top: 600px;
+        }
+
+        100% {
+          background-color: red;
+          left: 0;
+          top: 0;
+        }
       }
     </style>
   </head>
 
   <body>
-    <div class="box-red"></div>
+    <div class="ball"></div>
+    <div class="ball-two"></div>
+    <div class="ball-three"></div>
   </body>
 </html>
