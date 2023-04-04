@@ -9,103 +9,73 @@
       .ball {
         width: 100px;
         height: 100px;
-        border-radius: 100%;
-        background-color: red;
+        background-color: blueviolet;
         position: relative;
+        border-radius: 100%;
 
-        animation-name: example-one; /*passo o nome da keyframe*/
-        animation-duration: 4s;
+        animation-name: example;
+        animation-duration: 2s;
+
+        animation-fill-mode: forwards; /*permite que ao final da animação, o objeto que está sendo animado, fique posicionado de forma estática no ponto final*/
       }
 
       .ball-two {
         width: 100px;
         height: 100px;
-        border-radius: 100%;
-        background-color: red;
+        background-color: blueviolet;
         position: relative;
+        border-radius: 100%;
 
         animation-name: example-two;
-        animation-duration: 4s;
+        animation-duration: 2s;
+        animation-delay: 2s;
+
+        animation-fill-mode: backwards; /*a propriedade 'animation-delay' gera o delay e libera a animação mais tarde, já o 'ani-fi-m: backwards' faz com que o elemento já comece com o efeito do keyframe acontecento mesmo que esteja com o delay setado e posteriormente volte para o original*/
       }
 
       .ball-three {
         width: 100px;
         height: 100px;
-        border-radius: 100%;
-        background-color: red;
+        background-color: blueviolet;
         position: relative;
+        border-radius: 100%;
 
         animation-name: example-three;
-        animation-duration: 5s;
-        animation-delay: 4s;
-        animation-iteration-count: infinite;
-        animation-direction: reverse; /*'reverse' começa a animação de trás pra frente; posso usar a propriedade 'alterate' p/ ela fazer uma animação em ping-pong (trás pra frente e frente pra trás); no 'alternate-reverse' ele começa de trás pra frente depois de frente pra trás*/
+        animation-duration: 2s;
+        animation-delay: 2s;
+
+        animation-fill-mode: both; /*aqui ele age com o efeito do backwards + foward, permitindo que a animação já comece com os efeitos do 'keyframe' mesmo que esteja com a propriedade 'animation-delay' setada, e ela termina com o efeito setado na animação keyframe, retornando apenas às propriedades originais que não foram alteradas*/
       }
 
-      /*determino que será uma keyframe (animação) e passo o nome dela; dentro dela coloco as especificações da animação*/
-      @keyframes example-one {
+      @keyframes example {
         from {
-          /*'from' é a especificação com a qual a animação irá começar*/
-          background-color: blueviolet;
+          left: 0px;
         }
 
         to {
-          /*'to' vai falar para onde a animação tem que ir; o que ela tem que fazer*/
-          background-color: rosybrown;
+          left: calc(100% - 100px);
         }
-      } /*quando a animação acaba o elemento volta às config de estilização originais*/
+      }
 
       @keyframes example-two {
-        0% {
-          background-color: blueviolet;
+        from {
+          left: 0px;
+          background-color: cyan;
         }
 
-        25% {
-          background-color: rosybrown;
-        }
-
-        50% {
-          background-color: blue;
-        }
-
-        75% {
-          background-color: green;
-        }
-
-        100% {
-          background-color: yellow;
+        to {
+          left: calc(100% - 100px);
         }
       }
 
       @keyframes example-three {
-        0% {
-          background-color: blueviolet;
-          left: 0;
-          top: 0;
+        from {
+          left: 0px;
+          background-color: cyan;
         }
 
-        25% {
-          background-color: rosybrown;
-          left: 600px;
-          top: 0;
-        }
-
-        50% {
-          background-color: blue;
-          left: 600px;
-          top: 600px;
-        }
-
-        75% {
-          background-color: green;
-          left: 0;
-          top: 600px;
-        }
-
-        100% {
-          background-color: red;
-          left: 0;
-          top: 0;
+        to {
+          left: calc(100% - 100px);
         }
       }
     </style>
@@ -114,6 +84,5 @@
   <body>
     <div class="ball"></div>
     <div class="ball-two"></div>
-    <div class="ball-three"></div>
   </body>
 </html>
